@@ -1,0 +1,27 @@
+/* ~/.config/hypr/hyprlauncher.css */
+
+window {
+    background-color: rgba(30, 30, 46, 0.85); /* Fundo escuro com 85% de opacidade */
+    border-radius: 12px;
+    border: 2px solid #cba6f7; /* Borda na cor de destaque (ex: Violeta) */
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 14px;
+}
+
+#search-box {
+    background-color: #313244;
+    color: #cdd6f4;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 10px;
+}
+
+#entry:selected {
+    background-color: #b4befe; /* Cor quando o app está selecionado */
+    color: #11111b;
+    border-radius: 6px;
+}
+
+#entry:hover {
+    background-color: rgba(180, 190, 254, 0.5);
+}

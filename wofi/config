@@ -1,0 +1,24 @@
+# Modo de execução padrão (drun = app launcher)
+mode=drun
+
+# Mostra ícones das aplicações
+show=drun
+matching=contains
+insensitive=true
+
+# Layout e Dimensoes
+width=500
+height=350
+location=center
+prompt=Buscar...
+
+# Configurações de exibição do Wayland
+layer=top
+allow_images=true
+image_size=24
+
+# Esconde a barra de rolagem
+gtk_dark=true
+# Força o Wofi a manter o tamanho fixo independentemente dos resultados
+dynamic_lines=false
+term=kitty
