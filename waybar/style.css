@@ -9,67 +9,46 @@
 }
 
 /* --- Waybar Principal ---*/
+/* Aqui definimos a barra única para todos os módulos */
 window#waybar {
-  background-color: transparent;
+  background-color: black; 
+  color: #ffffff;
   transition: background-color .5s;
+  padding: 4px 0;
 }
 
 window#waybar.hidden {
   opacity: 0.2;
 }
 
-/* Garante que os contêineres invisíveis não tenham fundo nenhum */
+/* Garante que os contêineres não tenham fundos que atrapalhem a barra principal */
 .modules-left,
+.modules-center,
 .modules-right {
   background-color: transparent;
   border: none;
   box-shadow: none;
 }
 
-/* --- ESTÉTICA GLOBAL DE CAIXA (Quem são as Ilhas reais) --- */
-#custom-omarchy,
-#left-island,
-.modules-center,
-#mpris,
-#backlight,
-#bluetooth,
-#network,
-#pulseaudio,
-#memory,
-#cpu,
-#power-profiles-daemon,
-#battery {
-  border-radius: 3px;
-  border: 1.5px solid #1C1C1C;
-  min-height: 15px;
-  transition: background-color 0.5s;
-}
-
-/* --- Margens e Configurações das Ilhas --- */
-
-/* 1. Ilha do Arch Linux na extrema esquerda */
+/* --- Margens e Configurações dos Módulos --- */
 #custom-omarchy {
-  margin: 2px 4px 2px 4px;
-  padding: 0 13px 0 9px;
+  padding: 0 13px 0 19px;
   font-size: 16px;
   color: #FFFFFF;
 }
 
-/* 2. Ilha principal da Esquerda (Relógio, tray, etc) */
 #left-island {
-  margin: 1px 3px 2px 0px;
   padding: 0 5px;
 }
 
-/* 3. Ilha do Centro (Workspaces) */
-/* Unificado: Todas as propriedades baseadas no workspace */
+/* --- Workspaces --- */
 #workspaces button {
   background-color: transparent;
   color: #888888;
-  padding: 4px;
+  padding: 4px 6px;
   margin: 2px;
   border-radius: 2px;
-  border-bottom: 3px solid transparent; /* Linha invisível para evitar que o painel trema ao ativar */
+  border-bottom: 3px solid transparent; 
   transition: all 0.3s ease-in-out;
 }
 
@@ -81,13 +60,11 @@ window#waybar.hidden {
   opacity: 1;
 }
 
-/* Estilo exclusivo do workspace ativo */
 #workspaces button.active {
   color: #ffffff;
-  background: #1C1C1C; 
+  /* background: #1C1C1C;  */
 }
 
-/* Efeito ao passar o mouse por cima */
 #workspaces button:hover {
   color: #ffffff;
   opacity: 1;
@@ -95,7 +72,7 @@ window#waybar.hidden {
   box-shadow: inherit;
 }
 
-/* 4. Mini-ilhas da Direita (Cada item é uma ilhazinha) */
+/* Módulos da Direita (alinhados e sem divisão visual) */
 #backlight,
 #bluetooth,
 #network,
@@ -104,21 +81,18 @@ window#waybar.hidden {
 #cpu,
 #power-profiles-daemon,
 #battery {
-  margin: 1px 2px 2px 2px; /* Espaço entre as mini-ilhas */
-  padding: 0 6px; /* Espaço interno de cada mini-ilha */
+  padding: 0 8px; /* Apenas espaçamento interno, sem margens para não quebrar a barra */
   font-size: 12px;
 }
 
 #battery {
-  margin-right: 0px; /* Dá um espacinho a mais da borda da tela no final */
+  padding-right: 19px; 
 }
 
-/* --- Itens internos das Ilhas --- */
+/* --- Itens internos --- */
 #clock {
-  padding: 0 4px;
-  margin: 0 2px;
+  padding: 0 8px;
 }
-
 
 #custom-voxtype {
   margin-left: 7px;
@@ -135,6 +109,8 @@ tooltip {
   font-size: 10px;
   border: 1.5px solid rgba(255, 255, 255, 0.8);
   border-radius: 8px;
+  background-color: #1a1a1a;
+  color: #ffffff;
 }
 
 tooltip label {
@@ -165,25 +141,14 @@ tooltip label {
   padding-right: 15px;
 }
 
-
+/* --- Módulos Customizados --- */
 #custom-spotify {
-    background-color: #1DB954; /* Verde clássico do Spotify */
-    color: #191414;            /* Texto escuro para contraste */
-    border-radius: 15px;       /* Bordas arredondadas (padrão pílula) */
-    padding: 0 15px;           /* Espaçamento interno */
-    margin: 4px 6px;           /* Margem externa em relação à barra */
-    font-weight: bold;         /* Deixa o texto em negrito */
-}
-
-#custom-spotify {
-    border-radius: 3px;
-    border: 1.5px solid #1C1C1C;
-    margin: 1px 2px 2px 2px;
-    padding: 0 8px;
-    min-width: 180px;
-    background: transparent;
-    color: #ffffff;
-    transition: background-color .3s, color .3s, border-color .3s;
+    background-color: #1DB954;
+    color: #191414;            
+    border-radius: 15px;       
+    padding: 0 15px;           
+    margin: 4px 6px;           
+    font-weight: bold;         
 }
 
 #custom-spotify.playing {
@@ -200,8 +165,8 @@ tooltip label {
 #custom-spotify.offline {
     opacity: .4;
 }
+
 #mpris {
-  margin: 1px 4px 2px 0px;
   padding: 0 10px;
   color: #a6e3a1;
 }
