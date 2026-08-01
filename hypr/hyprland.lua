@@ -32,6 +32,7 @@ local menu        = "wofi --show drun"
 local browser = "firefox"
 local mainMod = "SUPER"
 
+local borda = {"rgba(3b4261ff)", "rgba(0a0b0fcc)", "rgba(458588ff)", "rgba(282828cc)", "rgba(83a598ff)", "rgba(1d2021cc)", "rgba(a3c77dff)", "rgba(1f232acc)"}
 -- look and feel
 hl.config({
     general = {
@@ -41,8 +42,12 @@ hl.config({
         border_size = 2,
 
         col = {
-            active_border   = "rgba(3b4261ff)",
-            inactive_border = "rgba(0a0b0fcc)",
+            -- tokyonight -> 1 e 2
+            -- gruvbox -> 3 e 4
+            -- koda -> 5 e 6
+            -- osaka -> 7 e 8
+            active_border   = borda[3],
+            inactive_border = borda[4],
         },
 
         resize_on_border = false,
@@ -115,6 +120,12 @@ hl.config({
 
 -- windowrules
 hl.window_rule({
+    name  = "opaque-firefox-evince",
+    match = { class = "^(firefox|evince)$" },
+    opacity = "1.0 override 1.0 override",
+})
+
+hl.window_rule({
     name  = "fix-xwayland-drags",
     match = {
         class      = "^$",
@@ -160,9 +171,6 @@ hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("kitty -e nvim"))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("spotify"))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen(0))
 
--- Toggle Opaque (bindd usa a propriedade description)
-hl.bind(mainMod .. " + BACKSPACE", hl.dsp.exec_cmd("hyprctl --batch 'dispatch setprop active opaque toggle; dispatch setprop active noblur toggle;'"), { description = "Toggle opaque and noblur" })
-
 for i = 1, 9 do
     hl.bind(mainMod .. " + " .. i,         hl.dsp.focus({ workspace = i }))
     hl.bind(mainMod .. " + SHIFT + " .. i, hl.dsp.window.move({ workspace = i }))
@@ -205,6 +213,7 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 5%-"), { loc
 hl.bind("Print", hl.dsp.exec_cmd("bash -c 'grim -g \"$(slurp)\" - | satty --filename - --output-filename ~/Pictures/Screenshots/satty-$(date +%Y%m%d-%H%M%S).png'"))
 
 hl.bind(mainMod .. " + ALT + SPACE", hl.dsp.exec_cmd("~/.config/hypr/scripts/seletor_wallpaper.sh"))
+hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("~/.config/hypr/scripts/theme-switcher.sh"))
 hl.bind(mainMod .. " + SHIFT + W",   hl.dsp.exec_cmd("~/.config/hypr/scripts/mudar_wallpaper.sh"))
 
 hl.bind(mainMod .. " + END", hl.dsp.submap("power"))
@@ -216,3 +225,16 @@ hl.define_submap("power", function()
     hl.bind("ESCAPE", hl.dsp.submap("reset"))
     hl.bind("RETURN", hl.dsp.submap("reset"))
 end)
+
+-- input
+hl.config({
+    input = {
+        kb_layout = "us,br",
+        kb_options = "compose:caps,grp:ctrls_toggle",
+        follow_mouse = 1,
+        sensitivity = 0,
+        touchpad = {
+        natural_scroll = true
+        }
+    }
+})
