@@ -28,7 +28,7 @@ case $THEME in
         ;;
     "OsakaJade")
         KITTY_THEME="osakajade"
-        NVIM_THEME="osaka_jade"
+        NVIM_THEME="bamboo"
         WALL_DIR="osakajade"
         IDX_ACTIVE=7
         IDX_INACTIVE=8
